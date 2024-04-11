@@ -29,5 +29,13 @@ public class Appointment {
     @ManyToOne
     @JoinColumn(name = "surgery_id", unique = false)
     private Surgery surgery;
-
+    @Override
+    public String toString(){
+        return String.format("{\"dentist\": \"%s\", \"patient\": \"%s\", \"surgery\": %s, \"appointmentDate\": %s }",
+                this.getDentist().getFirstName()+this.getDentist().getLastName(),
+                this.getPatient().getFirstName()+this.getPatient().getLastName(),
+                this.getSurgery().getName(),
+                this.date
+                );
+    }
 }
