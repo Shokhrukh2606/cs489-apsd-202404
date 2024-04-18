@@ -4,7 +4,7 @@ import jakarta.persistence.Embeddable;
 
 @Embeddable
 public class FuelEfficiency {
-    private double city;
-    private double highway;
-    private double mixed;
+    private int city;
+    private int highway;
+    private int mixed;
 }
