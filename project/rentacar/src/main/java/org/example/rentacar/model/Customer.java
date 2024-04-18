@@ -21,7 +21,6 @@ public class Customer extends User{
     public Address address;
 
     private String driverLicenseNumber;
-    @DateTimeFormat(pattern = "MM/dd/yyyy")
     private LocalDate dateOfBirth;
     @Override
     public UserType getType() {

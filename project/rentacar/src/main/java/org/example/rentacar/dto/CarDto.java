@@ -21,6 +21,7 @@ public class CarDto {
     private int seatsNumber;
     private int numberOfBags;
     private String imageUrl;
+    private String garageNumber;
     private Set<FeatureDto> features;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)

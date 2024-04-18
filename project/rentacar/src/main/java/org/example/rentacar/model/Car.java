@@ -24,6 +24,7 @@ public class Car {
     private int year;
     private int seatsNumber;
     private String imageUrl;
+    private String garageNumber;
     @ElementCollection(fetch = FetchType.LAZY)
     @CollectionTable(name="car_feature", joinColumns = @JoinColumn(name = "car_id", nullable = false), uniqueConstraints = @UniqueConstraint(columnNames = {"car_id"}))
     private Set<Feature> features=new HashSet<>();

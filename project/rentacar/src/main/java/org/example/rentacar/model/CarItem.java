@@ -15,7 +15,8 @@ public class CarItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String plateNumber;
-    @ManyToOne
+    private String vinNumber;
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "car_id", unique = false)
     private Car car;
 }

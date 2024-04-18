@@ -16,11 +16,14 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private LocalDate pickupDate;
-    private LocalDate dropoffDate;
+    private LocalDate pickUpDate;
+    private LocalDate dropOffDate;
     @ManyToOne
     @JoinColumn(name = "caritem_id", unique = false)
     private CarItem carItem;
+    @ManyToOne
+    @JoinColumn(name = "car_id", unique = false)
+    private Car car;
     @ManyToOne
     @JoinColumn(name = "customer_id", unique = false)
     private Customer customer;

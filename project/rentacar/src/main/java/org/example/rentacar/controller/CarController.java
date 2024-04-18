@@ -3,6 +3,8 @@ package org.example.rentacar.controller;
 import jakarta.validation.Valid;
 import org.example.rentacar.dto.CarDto;
 import org.example.rentacar.service.CarService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,11 +17,11 @@ public class CarController {
         this.carService=carService;
     }
     @GetMapping
-    public List<CarDto> findAllCars(){
-        return carService.findAllCars();
+    public ResponseEntity<List<CarDto>> findAllCars(){
+        return ResponseEntity.ok(carService.findAllCars());
     }
     @PostMapping
-    public CarDto registerCar(@Valid @RequestBody CarDto carDto){
-        return carService.registerCar(carDto);
+    public ResponseEntity<CarDto> registerCar(@Valid @RequestBody CarDto carDto){
+        return new ResponseEntity<>(carService.registerCar(carDto), HttpStatus.CREATED);
     }
 }
