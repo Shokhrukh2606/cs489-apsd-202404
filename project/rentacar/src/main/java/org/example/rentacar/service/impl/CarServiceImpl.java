@@ -25,6 +25,11 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
+    public List<CarDto> findAllCarsByCategoryId(Long id) {
+        return carRepository.findAllByCategoryId(id).stream().map(carMapper::toDto).toList();
+    }
+
+    @Override
     public CarDto registerCar(CarDto carDto) {
         Car car=objectMapper.convertValue(carDto, Car.class);
         return carMapper.toDto(carRepository.save(car));

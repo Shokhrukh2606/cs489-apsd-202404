@@ -1,5 +1,6 @@
 package org.example.rentacar.advice;
 
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -17,6 +18,13 @@ public class GlobalExceptionHandler {
         Map<String, String> errors = new HashMap<>();
         ex.getBindingResult().getFieldErrors().forEach(error ->
                 errors.put(error.getField(), error.getDefaultMessage()));
+        return ResponseEntity.badRequest().body(errors);
+    }
+    @ExceptionHandler(EntityNotFoundException.class)
+    public ResponseEntity<Map<String, String>> handleEntityNotFoundExceptions(
+            EntityNotFoundException ex) {
+        Map<String, String> errors = new HashMap<>();
+        errors.put("message", ex.getMessage());
         return ResponseEntity.badRequest().body(errors);
     }
 }

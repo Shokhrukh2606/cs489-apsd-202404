@@ -16,6 +16,11 @@ public class CarController {
     public CarController(CarService carService){
         this.carService=carService;
     }
+
+    @GetMapping("category/{categoryId}")
+    public ResponseEntity<List<CarDto>> findAllCarsByCategoryId(@PathVariable Long categoryId){
+        return ResponseEntity.ok(carService.findAllCarsByCategoryId(categoryId));
+    }
     @GetMapping
     public ResponseEntity<List<CarDto>> findAllCars(){
         return ResponseEntity.ok(carService.findAllCars());
