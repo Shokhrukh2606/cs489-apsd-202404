@@ -19,8 +19,9 @@ public class Customer extends User{
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id", unique=true)
     public Address address;
-
+    @Column(nullable = false, unique = true)
     private String driverLicenseNumber;
+    @Column(nullable = false)
     private LocalDate dateOfBirth;
     @Override
     public UserType getType() {
