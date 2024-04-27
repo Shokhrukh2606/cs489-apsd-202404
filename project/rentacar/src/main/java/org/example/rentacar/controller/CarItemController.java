@@ -31,6 +31,10 @@ public class CarItemController {
     public ResponseEntity<CarItemDto> registerCarItem(@Valid @RequestBody CarItemRequestDto carItemRequestDto){
         return new ResponseEntity<>(carItemService.registerCarItem(carItemRequestDto), HttpStatus.CREATED);
     }
+    @PutMapping("/{carItemId}")
+    public ResponseEntity<CarItemDto> updateCarItem(@PathVariable Long carItemId, @Valid @RequestBody CarItemRequestDto carItemRequestDto){
+        return new ResponseEntity<>(carItemService.updateCar(carItemId,carItemRequestDto), HttpStatus.CREATED);
+    }
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCarItem(@PathVariable Long id){
         carItemService.deleteById(id);

@@ -15,4 +15,5 @@ public class CarItemDto {
     private Long id;
     private String plateNumber;
     private String vinNumber;
+    private String garageSection;
 }

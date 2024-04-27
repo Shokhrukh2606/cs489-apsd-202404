@@ -14,7 +14,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @ToString(includeFieldNames = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class BookDetailDto {
+public class CheckinResponseDto {
     private Long id;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate pickUpDate;

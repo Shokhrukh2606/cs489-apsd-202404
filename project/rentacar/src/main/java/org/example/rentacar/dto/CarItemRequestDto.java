@@ -12,7 +12,9 @@ import lombok.ToString;
 @ToString(includeFieldNames = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CarItemRequestDto {
+    private Long id;
     private Long carId;
     private String plateNumber;
     private String vinNumber;
+    private String garageSection;
 }

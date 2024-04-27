@@ -12,6 +12,7 @@ import lombok.ToString;
 @ToString(includeFieldNames = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CategoryDto {
+    private Long id;
     private Long parentId;
     private String name;
 }

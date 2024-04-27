@@ -8,4 +8,5 @@ public interface CarService {
     List<CarDto> findAllCars();
     List<CarDto> findAllCarsByCategoryId(Long id);
     CarDto registerCar(CarDto carDto);
+    CarDto registerCar(CarDto carDto, Long categoryId);
 }

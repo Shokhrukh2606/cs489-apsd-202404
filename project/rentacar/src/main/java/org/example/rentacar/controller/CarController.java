@@ -27,6 +27,9 @@ public class CarController {
     }
     @PostMapping
     public ResponseEntity<CarDto> registerCar(@Valid @RequestBody CarDto carDto){
+        if(carDto.getCategory().getId()!=null){
+            return new ResponseEntity<>(carService.registerCar(carDto, carDto.getCategory().getId()), HttpStatus.CREATED);
+        }
         return new ResponseEntity<>(carService.registerCar(carDto), HttpStatus.CREATED);
     }
 }

@@ -23,7 +23,7 @@ public class CarDto {
     private String imageUrl;
     private String garageNumber;
     private Set<FeatureDto> features;
-
+    private Double priceForDay;
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("fuelEfficiency")
     private FuelEfficiencyDto fuelEfficiency;

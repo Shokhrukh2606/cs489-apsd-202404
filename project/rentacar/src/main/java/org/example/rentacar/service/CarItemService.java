@@ -10,5 +10,6 @@ public interface CarItemService {
     List<CarItemDto> findAllByCarId(Long id);
     CarItemDetailDto findCarItemByPlateNumber(String plateNumber) throws Throwable;
     CarItemDto registerCarItem(CarItemRequestDto carItemRequestDto);
+    CarItemDto updateCar(Long id, CarItemRequestDto carItemRequestDto);
     void deleteById(Long id);
 }

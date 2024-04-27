@@ -1,9 +1,11 @@
 package org.example.rentacar.controller;
 
 import lombok.AllArgsConstructor;
+import org.example.rentacar.dto.CustomerDTO;
 import org.example.rentacar.dto.LoginRequestDto;
 import org.example.rentacar.dto.LoginResponseDto;
 import org.example.rentacar.dto.RegisterRequestDto;
+import org.example.rentacar.mapper.CustomerMapper;
 import org.example.rentacar.model.Address;
 import org.example.rentacar.model.Customer;
 import org.example.rentacar.model.User;
@@ -26,6 +28,7 @@ public class UaaController {
     private final AuthenticationManager authenticationManager;
     private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
+    private final CustomerMapper customerMapper;
     @PostMapping("/signin")
     public ResponseEntity<LoginResponseDto> signin(@RequestBody LoginRequestDto loginRequest) {
         try{
@@ -43,7 +46,7 @@ public class UaaController {
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<User> signup(@RequestBody RegisterRequestDto registerRequest) throws Exception {
+    public ResponseEntity<CustomerDTO> signup(@RequestBody RegisterRequestDto registerRequest) throws Exception {
         Customer newUser=new Customer();
         newUser.setFirstName(registerRequest.getFirstName());
         newUser.setLastName(registerRequest.getLastName());
@@ -55,6 +58,6 @@ public class UaaController {
         newUser.setDriverLicenseNumber(registerRequest.getDriverLicenseNumber());
         newUser.setDateOfBirth(registerRequest.getDateOfBirth());
         userRepository.save(newUser);
-        return ResponseEntity.ok(newUser);
+        return ResponseEntity.ok(customerMapper.toDto(newUser));
     }
 }

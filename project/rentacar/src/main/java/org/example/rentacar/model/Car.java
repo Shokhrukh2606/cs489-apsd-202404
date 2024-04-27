@@ -19,10 +19,13 @@ public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false)
     private String make;
+    @Column(nullable = false)
     private String model;
     private int year;
     private int seatsNumber;
+    @Column(nullable = false)
     private String imageUrl;
     private String garageNumber;
     @ElementCollection(fetch = FetchType.LAZY)
@@ -33,7 +36,8 @@ public class Car {
     @Embedded
     @JsonUnwrapped
     private FuelEfficiency fuelEfficiency;
-
+    @Column(nullable = false)
+    private Double priceForDay;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "category_id", unique = false)
     private Category category;

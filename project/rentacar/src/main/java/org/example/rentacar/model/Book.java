@@ -29,7 +29,7 @@ public class Book {
     private Customer customer;
     private boolean isDeleted;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "invoice_id", unique = true)
     private Invoice invoice;
 }

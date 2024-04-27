@@ -37,7 +37,16 @@ public class CarItemServiceImpl implements CarItemService {
     @Override
     public CarItemDto registerCarItem(CarItemRequestDto carItemRequestDto) {
         Car car=carRepository.findById(carItemRequestDto.getCarId()).orElseThrow(()->new EntityNotFoundException(String.format("Car with id %d not found", carItemRequestDto.getCarId())));
-        return carItemMapper.toDto(carItemRepository.save(new CarItem(null, carItemRequestDto.getPlateNumber(), carItemRequestDto.getVinNumber(), car)));
+        return carItemMapper.toDto(carItemRepository.save(new CarItem(null, carItemRequestDto.getPlateNumber(), carItemRequestDto.getVinNumber(),carItemRequestDto.getGarageSection(),  car)));
+    }
+
+    @Override
+    public CarItemDto updateCar(Long carItemid, CarItemRequestDto carItemRequestDto) {
+        CarItem carItem=carItemRepository.findById(carItemid).orElseThrow(()->new EntityNotFoundException(String.format("Car with id %d not found", carItemRequestDto.getCarId())));
+        carItem.setGarageSection(carItemRequestDto.getGarageSection());
+        carItem.setPlateNumber(carItemRequestDto.getPlateNumber());
+        carItem.setVinNumber(carItemRequestDto.getVinNumber());
+        return carItemMapper.toDto(carItemRepository.save(carItem));
     }
 
     @Override
